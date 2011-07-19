@@ -30,13 +30,14 @@ import java.util.Properties;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
-import org.openengsb.domain.report.model.FileReportPart;
+import org.openengsb.core.api.ekb.EngineeringKnowledgeBaseService;
 import org.openengsb.domain.report.model.Report;
 import org.openengsb.domain.report.model.ReportPart;
 
 public class FileSystemReportStore implements ReportStore {
 
     private File rootDirectory;
+    private EngineeringKnowledgeBaseService ekbService;
 
     public FileSystemReportStore(File rootDirectory) {
         this.rootDirectory = rootDirectory;
@@ -133,10 +134,13 @@ public class FileSystemReportStore implements ReportStore {
             File metaFile = new File(reportFile, "report.meta");
             Properties reportProps = readPropertiesFromFile(metaFile);
             String name = reportProps.getProperty("reportName");
-            Report report = new Report(name);
+            Report report = ekbService.createEmptyModelObject(Report.class);
+            report.setName(name);
+            List<ReportPart> parts = new ArrayList<ReportPart>();
             for (File partFile : getAndSortPartFiles(reportFile)) {
-                report.addPart(loadPart(partFile));
+                parts.add(loadPart(partFile));
             }
+            report.setParts(parts);
             return report;
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -279,6 +283,10 @@ public class FileSystemReportStore implements ReportStore {
         } catch (IOException ioe) {
             throw new RuntimeException(ioe);
         }
+    }
+    
+    public void setEkbService(EngineeringKnowledgeBaseService ekbService) {
+        this.ekbService = ekbService;
     }
 
 }

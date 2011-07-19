@@ -19,8 +19,12 @@ package org.openengsb.domain.report.common;
 
 import java.io.File;
 
+import org.openengsb.core.api.ekb.EngineeringKnowledgeBaseService;
+
 public class FileSystemReportStoreFactory implements ReportStoreFactory {
 
+    private EngineeringKnowledgeBaseService ekbService;
+    
     @Override
     public ReportStore createReportStore(String id) {
         String workingDir = System.getProperty("karaf.data");
@@ -28,6 +32,12 @@ public class FileSystemReportStoreFactory implements ReportStoreFactory {
             workingDir = "data";
         }
         File rootFile = new File(workingDir + "/openengsb/reports/" + id);
-        return new FileSystemReportStore(rootFile);
+        FileSystemReportStore store = new FileSystemReportStore(rootFile);
+        store.setEkbService(ekbService);
+        return store;
+    }
+    
+    public void setEkbService(EngineeringKnowledgeBaseService ekbService) {
+        this.ekbService = ekbService;
     }
 }
