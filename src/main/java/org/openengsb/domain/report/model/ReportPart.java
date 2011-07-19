@@ -17,25 +17,19 @@
 
 package org.openengsb.domain.report.model;
 
-public abstract class ReportPart {
+import org.openengsb.core.api.ekb.EKBProxyable;
 
-    private String partName;
-
-    private String contentType;
-
-    public ReportPart(String partName, String contentType) {
-        this.partName = partName;
-        this.contentType = contentType;
-    }
-
-    public abstract byte[] getContent();
-
-    public String getContentType() {
-        return contentType;
-    }
-
-    public String getPartName() {
-        return partName;
-    }
-
+public interface ReportPart extends EKBProxyable {
+    
+    void setPartName(String partName);
+    
+    String getPartName();
+    
+    void setContentType(String contentType);
+    
+    String getContentType();
+    
+    void setContent(byte[] content);
+    
+    byte[] getContent();
 }
