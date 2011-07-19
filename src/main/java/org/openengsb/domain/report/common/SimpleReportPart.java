@@ -15,24 +15,54 @@
  * limitations under the License.
  */
 
-package org.openengsb.domain.report.model;
+package org.openengsb.domain.report.common;
 
 import java.util.Arrays;
 
-public class SimpleReportPart extends ReportPart {
+import org.openengsb.domain.report.model.ReportPart;
 
+public class SimpleReportPart implements ReportPart {
+    private String partName;
+    private String contentType;
     private byte[] content;
 
     public SimpleReportPart(String partName, String contentType, byte[] content) {
-        super(partName, contentType);
+        this.partName = partName;
+        this.contentType = contentType;
         this.content = content;
     }
 
+    @Override
     public byte[] getContent() {
         if (content == null) {
             return null;
         }
         return Arrays.copyOf(content, content.length);
+    }
+
+    @Override
+    public void setPartName(String partName) {
+        this.partName = partName;
+    }
+
+    @Override
+    public String getPartName() {
+        return partName;
+    }
+
+    @Override
+    public void setContentType(String contentType) {
+        this.contentType = contentType;
+    }
+
+    @Override
+    public String getContentType() {
+        return contentType;
+    }
+
+    @Override
+    public void setContent(byte[] content) {
+        this.content = content;
     }
 
 }
