@@ -17,9 +17,9 @@
 
 package org.openengsb.domain.report.model;
 
-import org.openengsb.core.api.ekb.EKBProxyable;
+import org.openengsb.core.api.model.OpenEngSBModel;
 
-public interface ReportPart extends EKBProxyable {
+public interface ReportPart extends OpenEngSBModel {
     
     void setPartName(String partName);
     
