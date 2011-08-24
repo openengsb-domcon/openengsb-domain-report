@@ -17,9 +17,16 @@
 
 package org.openengsb.domain.report.common;
 
+import static org.mockito.Mockito.doAnswer;
+import static org.mockito.Mockito.mock;
+
 import java.io.File;
 
 import org.apache.commons.io.FileUtils;
+import org.mockito.invocation.InvocationOnMock;
+import org.mockito.stubbing.Answer;
+import org.openengsb.core.api.ekb.EngineeringKnowledgeBaseService;
+import org.openengsb.domain.report.model.Report;
 
 public class FileSystemReportStoreTest extends ReportStoreTest {
 
@@ -28,7 +35,19 @@ public class FileSystemReportStoreTest extends ReportStoreTest {
     @Override
     public ReportStore getReportStore() {
         rootDir = new File("reports");
-        return new FileSystemReportStore(rootDir);
+        FileSystemReportStore store = new FileSystemReportStore(rootDir);
+        
+        EngineeringKnowledgeBaseService ekbService = mock(EngineeringKnowledgeBaseService.class);
+        doAnswer(new Answer<java.lang.Object>() {
+            public java.lang.Object answer(InvocationOnMock invocation) {
+                return new TestReport("");
+            }
+        })
+            .when(ekbService).createEmptyModelObject(Report.class);
+        
+        store.setEkbService(ekbService);
+        
+        return store;
     }
 
     @Override

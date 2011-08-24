@@ -17,38 +17,17 @@
 
 package org.openengsb.domain.report.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class Report {
+import org.openengsb.core.api.model.OpenEngSBModel;
 
-    private String name;
-
-    private List<ReportPart> parts;
-
-    public Report(String name) {
-        this.name = name;
-        this.parts = new ArrayList<ReportPart>();
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void addPart(ReportPart part) {
-        this.parts.add(part);
-    }
-
-    public void removePart(ReportPart part) {
-        this.parts.remove(part);
-    }
-
-    public List<ReportPart> getParts() {
-        return new ArrayList<ReportPart>(parts);
-    }
-
-    public void setParts(List<ReportPart> parts) {
-        this.parts = new ArrayList<ReportPart>(parts);
-    }
-
+public interface Report extends OpenEngSBModel {
+    
+    void setName(String name);
+    
+    String getName();
+    
+    void setParts(List<ReportPart> parts);
+    
+    List<ReportPart> getParts();
 }

@@ -17,56 +17,53 @@
 
 package org.openengsb.domain.report.common;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import org.openengsb.core.common.AbstractOpenEngSBConnectorService;
-import org.openengsb.domain.report.ReportDomain;
+import org.openengsb.core.api.model.OpenEngSBModelEntry;
 import org.openengsb.domain.report.model.Report;
+import org.openengsb.domain.report.model.ReportPart;
 
-public abstract class AbstractReportDomain extends AbstractOpenEngSBConnectorService implements ReportDomain {
+public class TestReport implements Report {
+    private String name;
+    private List<ReportPart> parts;
 
-    private ReportStore store;
-
-    public AbstractReportDomain(String instanceId) {
-        super(instanceId);
+    public TestReport(String name) {
+        this.name = name;
+        this.parts = new ArrayList<ReportPart>();
     }
 
     @Override
-    public List<Report> getAllReports(String category) {
-        return store.getAllReports(category);
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Override
-    public void storeReport(String category, Report report) {
-        store.storeReport(category, report);
+    public String getName() {
+        return name;
     }
 
     @Override
-    public void removeReport(String category, Report report) {
-        store.removeReport(category, report);
+    public void setParts(List<ReportPart> parts) {
+        this.parts = parts;
     }
 
     @Override
-    public List<String> getAllCategories() {
-        return store.getAllCategories();
+    public List<ReportPart> getParts() {
+        return parts;
+    }
+    
+    @Override
+    public void addOpenEngSBModelEntry(OpenEngSBModelEntry arg0) {
     }
 
     @Override
-    public void removeCategory(String category) {
-        store.removeCategory(category);
+    public List<OpenEngSBModelEntry> getOpenEngSBModelEntries() {
+        return null;
     }
 
     @Override
-    public void createCategory(String category) {
-        store.createCategory(category);
-    }
-
-    public void setStore(ReportStore store) {
-        this.store = store;
-    }
-
-    public ReportStore getStore() {
-        return store;
+    public void removeOpenEngSBModelEntry(String arg0) {
     }
 
 }
