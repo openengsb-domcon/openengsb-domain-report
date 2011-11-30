@@ -51,13 +51,10 @@
     <property name="edbService" ref="edbService" />
   </bean>
   
-  <bean id="fileSystemReportStoreFactory" class="org.openengsb.domain.report.common.FileSystemReportStoreFactory">
-    <property name="ekbService" ref="ekbService" />
-  </bean>
+  <bean id="fileSystemReportStoreFactory" class="org.openengsb.domain.report.common.FileSystemReportStoreFactory" />
 
   <reference id="workflowService" interface="org.openengsb.core.api.workflow.WorkflowService" />
   <reference id="contextService" interface="org.openengsb.core.api.context.ContextService" />
   <reference id="edbService" interface="org.openengsb.core.api.edb.EngineeringDatabaseService" />
-  <reference id="ekbService" interface="org.openengsb.core.api.ekb.EngineeringKnowledgeBaseService" />
   
 </blueprint>
