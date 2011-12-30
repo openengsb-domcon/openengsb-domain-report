@@ -24,6 +24,7 @@ import org.openengsb.core.api.Event;
 import org.openengsb.domain.report.model.Report;
 import org.openengsb.domain.report.model.ReportPart;
 
+// @extract-start ReportDomain
 public interface ReportDomain extends Domain {
 
     /**
@@ -109,3 +110,4 @@ public interface ReportDomain extends Domain {
      */
     void createCategory(String category);
 }
+// @extract-end
