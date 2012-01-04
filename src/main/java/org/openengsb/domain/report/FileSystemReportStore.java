@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package org.openengsb.domain.report.common;
+package org.openengsb.domain.report;
 
 import java.io.File;
 import java.io.FileReader;
@@ -31,8 +31,6 @@ import java.util.Properties;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
 import org.openengsb.core.common.util.ModelUtils;
-import org.openengsb.domain.report.model.Report;
-import org.openengsb.domain.report.model.ReportPart;
 
 public class FileSystemReportStore implements ReportStore {
 

@@ -26,8 +26,10 @@ import java.util.List;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.openengsb.domain.report.model.Report;
-import org.openengsb.domain.report.model.ReportPart;
+import org.openengsb.domain.report.Report;
+import org.openengsb.domain.report.ReportPart;
+import org.openengsb.domain.report.ReportStore;
+import org.openengsb.domain.report.SimpleReportPart;
 
 public abstract class ReportStoreTest {
 

@@ -17,6 +17,9 @@
 
 package org.openengsb.domain.report.common;
 
+import org.openengsb.domain.report.InMemoryReportStore;
+import org.openengsb.domain.report.ReportStore;
+
 public class InMemoryReportStoreTest extends ReportStoreTest {
 
     @Override

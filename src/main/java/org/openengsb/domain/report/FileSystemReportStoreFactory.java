@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package org.openengsb.domain.report.common;
+package org.openengsb.domain.report;
 
 import java.io.File;
 

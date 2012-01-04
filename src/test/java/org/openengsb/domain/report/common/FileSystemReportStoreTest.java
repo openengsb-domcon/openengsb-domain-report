@@ -20,6 +20,8 @@ package org.openengsb.domain.report.common;
 import java.io.File;
 
 import org.apache.commons.io.FileUtils;
+import org.openengsb.domain.report.FileSystemReportStore;
+import org.openengsb.domain.report.ReportStore;
 
 public class FileSystemReportStoreTest extends ReportStoreTest {
 

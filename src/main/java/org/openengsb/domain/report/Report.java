@@ -15,21 +15,19 @@
  * limitations under the License.
  */
 
-package org.openengsb.domain.report.model;
+package org.openengsb.domain.report;
+
+import java.util.List;
 
 import org.openengsb.core.api.model.OpenEngSBModel;
 
-public interface ReportPart extends OpenEngSBModel {
+public interface Report extends OpenEngSBModel {
     
-    void setPartName(String partName);
+    void setName(String name);
     
-    String getPartName();
+    String getName();
     
-    void setContentType(String contentType);
+    void setParts(List<ReportPart> parts);
     
-    String getContentType();
-    
-    void setContent(byte[] content);
-    
-    byte[] getContent();
+    List<ReportPart> getParts();
 }

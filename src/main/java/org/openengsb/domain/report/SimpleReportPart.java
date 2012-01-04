@@ -15,13 +15,12 @@
  * limitations under the License.
  */
 
-package org.openengsb.domain.report.common;
+package org.openengsb.domain.report;
 
 import java.util.Arrays;
 import java.util.List;
 
 import org.openengsb.core.api.model.OpenEngSBModelEntry;
-import org.openengsb.domain.report.model.ReportPart;
 
 public class SimpleReportPart implements ReportPart {
     private String partName;

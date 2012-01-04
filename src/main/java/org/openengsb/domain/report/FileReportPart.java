@@ -15,7 +15,7 @@
  * limitations under the License.
  */
 
-package org.openengsb.domain.report.common;
+package org.openengsb.domain.report;
 
 import java.io.File;
 import java.io.IOException;
@@ -23,7 +23,6 @@ import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 import org.openengsb.core.api.model.OpenEngSBModelEntry;
-import org.openengsb.domain.report.model.ReportPart;
 
 public class FileReportPart implements ReportPart {
     private File fileName;

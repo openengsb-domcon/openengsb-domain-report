@@ -21,8 +21,6 @@ import java.util.List;
 
 import org.openengsb.core.api.Domain;
 import org.openengsb.core.api.Event;
-import org.openengsb.domain.report.model.Report;
-import org.openengsb.domain.report.model.ReportPart;
 
 // @extract-start ReportDomain
 public interface ReportDomain extends Domain {

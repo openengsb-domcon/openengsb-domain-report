@@ -15,58 +15,64 @@
  * limitations under the License.
  */
 
-package org.openengsb.domain.report.common;
+package org.openengsb.domain.report;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
-import org.openengsb.core.common.AbstractOpenEngSBConnectorService;
-import org.openengsb.domain.report.ReportDomain;
-import org.openengsb.domain.report.model.Report;
 
-public abstract class AbstractReportDomain extends AbstractOpenEngSBConnectorService implements ReportDomain {
+public class InMemoryReportStore implements ReportStore {
 
-    private ReportStore store;
-
-    public AbstractReportDomain(String instanceId) {
-        super(instanceId);
-    }
+    private Map<String, Map<String, Report>> reports = new HashMap<String, Map<String, Report>>();
 
     @Override
     public List<Report> getAllReports(String category) {
-        return store.getAllReports(category);
+        Map<String, Report> categoryReports = reports.get(category);
+        if (categoryReports == null) {
+            return new ArrayList<Report>();
+        }
+        return new ArrayList<Report>(categoryReports.values());
     }
 
     @Override
     public void storeReport(String category, Report report) {
-        store.storeReport(category, report);
+        Map<String, Report> categoryReports = getOrCreateCategory(category);
+        categoryReports.put(report.getName(), report);
     }
 
     @Override
     public void removeReport(String category, Report report) {
-        store.removeReport(category, report);
+        Map<String, Report> categoryReports = reports.get(category);
+        if (categoryReports == null) {
+            return;
+        }
+        categoryReports.remove(report.getName());
     }
 
     @Override
     public List<String> getAllCategories() {
-        return store.getAllCategories();
+        return new ArrayList<String>(reports.keySet());
     }
 
     @Override
     public void removeCategory(String category) {
-        store.removeCategory(category);
+        reports.remove(category);
     }
 
     @Override
     public void createCategory(String category) {
-        store.createCategory(category);
+        reports.put(category, new HashMap<String, Report>());
     }
 
-    public void setStore(ReportStore store) {
-        this.store = store;
-    }
-
-    public ReportStore getStore() {
-        return store;
+    private Map<String, Report> getOrCreateCategory(String category) {
+        Map<String, Report> map = reports.get(category);
+        if (map == null) {
+            map = new HashMap<String, Report>();
+            reports.put(category, map);
+        }
+        return map;
     }
 
 }

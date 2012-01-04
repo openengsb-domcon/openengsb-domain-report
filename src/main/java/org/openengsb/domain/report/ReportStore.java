@@ -15,10 +15,23 @@
  * limitations under the License.
  */
 
-package org.openengsb.domain.report.common;
+package org.openengsb.domain.report;
 
-public interface ReportStoreFactory {
+import java.util.List;
 
-    ReportStore createReportStore(String id);
+
+public interface ReportStore {
+
+    List<Report> getAllReports(String category);
+
+    void storeReport(String category, Report report);
+
+    void removeReport(String category, Report report);
+
+    List<String> getAllCategories();
+
+    void removeCategory(String category);
+
+    void createCategory(String category);
 
 }
