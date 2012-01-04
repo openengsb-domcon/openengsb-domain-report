@@ -29,7 +29,7 @@
   <properties>
     <bundle.symbolicName>org.openengsb.domain.report</bundle.symbolicName>
     <bundle.namespace>org.openengsb.domain.report</bundle.namespace>
-    <domain.name>Report</domain.name>
+    <domain.name>ReportDomain</domain.name>
     <openengsb.compile.version>2.1.2</openengsb.compile.version>
   </properties>
 
