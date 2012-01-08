@@ -51,7 +51,7 @@
     <property name="edbService" ref="edbService" />
   </bean>
   
-  <bean id="fileSystemReportStoreFactory" class="org.openengsb.domain.report.common.FileSystemReportStoreFactory" />
+  <bean id="fileSystemReportStoreFactory" class="org.openengsb.domain.report.FileSystemReportStoreFactory" />
 
   <reference id="workflowService" interface="org.openengsb.core.api.workflow.WorkflowService" />
   <reference id="contextService" interface="org.openengsb.core.api.context.ContextService" />
