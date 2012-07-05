@@ -30,7 +30,6 @@ import java.util.Properties;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
-import org.openengsb.core.common.util.ModelUtils;
 
 public class FileSystemReportStore implements ReportStore {
 
@@ -131,7 +130,7 @@ public class FileSystemReportStore implements ReportStore {
             File metaFile = new File(reportFile, "report.meta");
             Properties reportProps = readPropertiesFromFile(metaFile);
             String name = reportProps.getProperty("reportName");
-            Report report = ModelUtils.createEmptyModelObject(Report.class);
+            Report report = new Report();
             report.setName(name);
             List<ReportPart> parts = new ArrayList<ReportPart>();
             for (File partFile : getAndSortPartFiles(reportFile)) {

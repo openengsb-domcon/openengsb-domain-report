@@ -18,11 +18,8 @@
 package org.openengsb.domain.report;
 
 import java.util.Arrays;
-import java.util.List;
 
-import org.openengsb.core.api.model.OpenEngSBModelEntry;
-
-public class SimpleReportPart implements ReportPart {
+public class SimpleReportPart extends ReportPart {
     private String partName;
     private String contentType;
     private byte[] content;
@@ -64,18 +61,5 @@ public class SimpleReportPart implements ReportPart {
     @Override
     public void setContent(byte[] content) {
         this.content = content;
-    }
-
-    @Override
-    public void addOpenEngSBModelEntry(OpenEngSBModelEntry arg0) {
-    }
-
-    @Override
-    public List<OpenEngSBModelEntry> getOpenEngSBModelEntries() {
-        return null;
-    }
-
-    @Override
-    public void removeOpenEngSBModelEntry(String arg0) {
     }
 }

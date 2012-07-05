@@ -19,12 +19,10 @@ package org.openengsb.domain.report;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
 
 import org.apache.commons.io.FileUtils;
-import org.openengsb.core.api.model.OpenEngSBModelEntry;
 
-public class FileReportPart implements ReportPart {
+public class FileReportPart extends ReportPart {
     private File fileName;
     private String partName;
     private String contentType;
@@ -67,18 +65,5 @@ public class FileReportPart implements ReportPart {
     @Override
     public void setContent(byte[] content) {
         // nothing to do here
-    }
-
-    @Override
-    public void addOpenEngSBModelEntry(OpenEngSBModelEntry arg0) {        
-    }
-
-    @Override
-    public List<OpenEngSBModelEntry> getOpenEngSBModelEntries() {
-        return null;
-    }
-
-    @Override
-    public void removeOpenEngSBModelEntry(String arg0) {        
     }
 }

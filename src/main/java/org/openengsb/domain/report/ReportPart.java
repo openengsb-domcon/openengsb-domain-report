@@ -17,19 +17,38 @@
 
 package org.openengsb.domain.report;
 
-import org.openengsb.core.api.model.OpenEngSBModel;
+import org.openengsb.core.api.Constants;
+import org.openengsb.core.api.model.annotation.Model;
+import org.openengsb.labs.delegation.service.Provide;
 
-public interface ReportPart extends OpenEngSBModel {
-    
-    void setPartName(String partName);
-    
-    String getPartName();
-    
-    void setContentType(String contentType);
-    
-    String getContentType();
-    
-    void setContent(byte[] content);
-    
-    byte[] getContent();
+@Provide(context = { Constants.DELEGATION_CONTEXT_MODELS })
+@Model
+public class ReportPart {
+    private String partName;
+    private String contentType;
+    private byte[] content;
+
+    public String getPartName() {
+        return partName;
+    }
+
+    public void setPartName(String partName) {
+        this.partName = partName;
+    }
+
+    public String getContentType() {
+        return contentType;
+    }
+
+    public void setContentType(String contentType) {
+        this.contentType = contentType;
+    }
+
+    public byte[] getContent() {
+        return content;
+    }
+
+    public void setContent(byte[] content) {
+        this.content = content;
+    }
 }

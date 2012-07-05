@@ -17,17 +17,41 @@
 
 package org.openengsb.domain.report;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import org.openengsb.core.api.model.OpenEngSBModel;
+import org.openengsb.core.api.Constants;
+import org.openengsb.core.api.model.annotation.Model;
+import org.openengsb.labs.delegation.service.Provide;
 
-public interface Report extends OpenEngSBModel {
+@Provide(context = { Constants.DELEGATION_CONTEXT_MODELS })
+@Model
+public class Report {
+    private String name;
+    private List<ReportPart> parts;
     
-    void setName(String name);
+    public Report() {
+        
+    }
     
-    String getName();
-    
-    void setParts(List<ReportPart> parts);
-    
-    List<ReportPart> getParts();
+    public Report(String name) {
+        this.name = name;
+        this.parts = new ArrayList<ReportPart>();
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<ReportPart> getParts() {
+        return parts;
+    }
+
+    public void setParts(List<ReportPart> parts) {
+        this.parts = parts;
+    }
 }
